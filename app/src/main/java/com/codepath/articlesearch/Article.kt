@@ -22,29 +22,20 @@ data class BaseResponse(
 data class Article(
     @SerialName("abstract")
     val abstract: String?,
-    @SerialName("byline")
-    val byline: Byline?,
     @SerialName("headline")
     val headline: HeadLine?,
+    @SerialName("byline")
+    val byline: Byline?,
     @SerialName("multimedia")
     val multimedia: List<MultiMedia>?,
 ) : java.io.Serializable {
+    //val headline: Any
     val mediaImageUrl = "https://www.nytimes.com/${multimedia?.firstOrNull { it.url != null }?.url ?: ""}"
-}@Keep
-@Serializable
-data class Byline(
-    @SerialName("original")
-    val original: String? = null
-) : java.io.Serializable
-@Keep
-@Serializable
-data class HeadLine(
-    @SerialName("main")
-    val main: String
-)
+}
 @Keep
 @Serializable
 data class MultiMedia(
     @SerialName("url")
     val url: String?
 ) : java.io.Serializable
+
